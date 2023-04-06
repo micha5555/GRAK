@@ -5,6 +5,7 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 
 import coordinates, edges
+import moving_forward
 
 def Cube(ver, edges):
     glBegin(GL_LINES)
@@ -32,7 +33,7 @@ def main():
                 quit()
 
 
-        if (i > 1):
+        if (i > 5):
             flag = False
         elif (i < 0):
             flag = True
@@ -42,9 +43,11 @@ def main():
         else:
             i -= 0.01
 
-        # glRotatef(1, 3, 1, 1)
+        glRotatef(1, 3, 1, 1)
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
-        Cube(coordinates.verticies, edges.edges)
+        Cube(moving_forward.get_verticies(i), edges.edges)
+        # Cube(coordinates.verticies, edges.edges)
+
         pygame.display.flip()
         pygame.time.wait(10)
 
