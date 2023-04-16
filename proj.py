@@ -4,6 +4,8 @@ from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
 
+import time
+
 import coordinates, edges
 import moving_forward
 
@@ -27,6 +29,15 @@ def main():
     i = 0.0
     flag = True
     while True:
+        keys = pygame.key.get_pressed()
+        if keys[K_LEFT]:
+            print('left')
+        if keys[K_RIGHT]:
+            print('right')
+        if keys[K_UP]:
+            print('up')
+        if keys[K_DOWN]:
+            print('down')
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -50,6 +61,7 @@ def main():
 
         pygame.display.flip()
         pygame.time.wait(10)
+        time.sleep(1)
 
 
 main()
