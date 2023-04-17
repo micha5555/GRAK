@@ -21,7 +21,7 @@ def main():
     # print(len(verticies.get_verticies(1)))
     pygame.init()
     display = (800,600)
-    viewport = (2400, 1800)
+    viewport = (800, 600)
     pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
 
     gluPerspective(45, (display[0]/display[1]), 0.1, 1000.0)
@@ -31,6 +31,7 @@ def main():
     i = 0.0
     flag = True
     ver = verticies.get_verticies()
+    # ver = verticies.divide_by_ten(ver)
     # i = 0.0
     while True:
         # gluPerspective(45+i, (display[0]/display[1]), 0.1, 50.0)
@@ -44,7 +45,13 @@ def main():
                 pygame.quit()
                 quit()
         
-        # viewport = transformations.count_zoom(keys)
+        viewport = transformations.count_zoom(viewport, keys)
+        # if keys[K_u]:
+        #     viewport = (viewport[0]+4, viewport[1]+3)
+        #     # transformation_matrixes += (create_zoom_marix(ZOOM_IN_RATIO),)
+        # if keys[K_o]:
+        #     viewport = (viewport[0]-4, viewport[1]-3)
+            # transformation_matrixes += (create_zoom_marix(ZOOM_OUT_RATIO),)
         viewport_x = (display[0] - viewport[0]) // 2
         viewport_y = (display[1] - viewport[1]) // 2
         glViewport(viewport_x, viewport_y, viewport[0], viewport[1])

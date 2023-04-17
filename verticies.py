@@ -91,6 +91,13 @@ def transform_verticies(ver, transformation_matrix):
         new_verticies += ((transformed_point[0], transformed_point[1], transformed_point[2]),)
     return new_verticies
 
+def divide_by_ten(ver):
+    new_verticies = ()
+    for i in range(len(ver)):
+        point = ver[i]
+        new_verticies += ((point[0]/3, point[1]/3, point[2]/3),)
+    return new_verticies
+
 def get_verticies():
     
     # for point in verticies:
