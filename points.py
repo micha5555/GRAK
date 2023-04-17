@@ -1,4 +1,6 @@
-verticies = (
+import numpy
+
+points_array = (
     # RIGHT BOTTOM FRONT
     (1, -1, 1),
     (1, -0.25, 1),
@@ -49,7 +51,7 @@ verticies = (
     (0.25, -0.25, -0.25),
     (0.25, -1, -0.25),
     
-    # # RIGHT TOP BACK
+    # RIGHT TOP BACK
     (1, 1, -0.25),
     (1, 0.25, -0.25),
     (0.25, 0.25, -0.25),
@@ -59,7 +61,7 @@ verticies = (
     (0.25, 0.25, -1),
     (0.25, 1, -1),
 
-    # # LEFT TOP BACK
+    # LEFT TOP BACK
     (-1, 1, -0.25),
     (-1, 0.25, -0.25),
     (-0.25, 0.25, -0.25),
@@ -69,7 +71,7 @@ verticies = (
     (-0.25, 0.25, -1),
     (-0.25, 1, -1),
 
-    # # LEFT BOTTOM BACK
+    # LEFT BOTTOM BACK
     (-1, -1, -0.25),
     (-1, -0.25, -0.25),
     (-0.25, -0.25, -0.25),
@@ -79,3 +81,12 @@ verticies = (
     (-0.25, -0.25, -1),
     (-0.25, -1, -1)
 )
+
+def transform_points(points, transformation_matrix):
+    new_points = ()
+    for i in range(len(points)):
+        point = points[i]
+        point_vector = numpy.matrix(str(point[0]) + '; ' + str(point[1]) + '; ' + str(point[2]) + '; 1')
+        transformed_point = numpy.matmul(transformation_matrix, point_vector)
+        new_points += ((transformed_point[0], transformed_point[1], transformed_point[2]),)
+    return new_points
