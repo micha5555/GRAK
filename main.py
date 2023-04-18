@@ -15,16 +15,16 @@ def Cube(points, edges):
             glVertex3fv(points[vertex])
     glEnd()
 
-
 def main():
     pygame.init()
+    pygame.display.set_caption(const.WINDOW_TITLE)
     display = (const.DISPLAY_DEFAULT_SIZE_X, const.DISPLAY_DEFAULT_SIZE_Y)
     default_viewport = (const.MIN_VIEWPORT_SIZE_X, const.MIN_VIEWPORT_SIZE_Y)
     pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
 
     gluPerspective(45, (display[0]/display[1]), 0.1, 1000.0)
 
-    glTranslatef(0.0,0.0, -5)
+    glTranslatef(0.0,0.0,0.0)
 
     all_points = points.points_array
     viewport = default_viewport
@@ -49,6 +49,5 @@ def main():
 
         pygame.display.flip()
         pygame.time.wait(10)
-
 
 main()
